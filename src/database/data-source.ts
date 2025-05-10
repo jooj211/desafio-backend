@@ -6,12 +6,8 @@ import { Inversor } from 'src/modules/inversores/entities/inversor.entity/invers
 import { Leitura } from 'src/modules/metricas/entities/leitura.entity/leitura.entity';
 
 export const AppDataSource = new DataSource({
-  type: 'postgres',
-  host: process.env.DB_HOST,
-  port: parseInt(process.env.DB_PORT!, 10),
-  username: process.env.DB_USER,
-  password: process.env.DB_PASS,
-  database: process.env.DB_NAME,
-  entities: [Usina, Inversor, Leitura],
-  migrations: ['dist/database/migrations/*.js'],
-});
+    type: 'sqlite',
+    database: 'database.sqlite',
+    entities: [Usina, Inversor, Leitura],
+    migrations: ['dist/database/migrations/*.js'],
+  });
