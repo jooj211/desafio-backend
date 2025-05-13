@@ -13,7 +13,7 @@ import { Reading } from 'src/modules/metrics/entities/reading.entity';
         type: 'sqlite',
         database: 'database.sqlite',
         entities: [Plant, Inverter, Reading],
-        synchronize: false,
+        synchronize: true,
       }),
     ],
   })
