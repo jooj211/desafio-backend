@@ -1,15 +1,15 @@
 import { Module } from '@nestjs/common';
 import { DatabaseModule } from './database/database.module';
-import { UsinasModule } from './modules/usinas/usinas.module';
-import { InversoresModule } from './modules/inversores/inversores.module';
-import { MetricasModule } from './modules/metricas/metricas.module';
+import { PlantsModule } from './modules/plants/plants.module';
+import { InvertersModule } from './modules/inverters/inverters.module';
+import { MetricsModule } from './modules/metrics/metrics.module';
 
 @Module({
   imports: [
     DatabaseModule,
-    UsinasModule,
-    InversoresModule,
-    MetricasModule
+    PlantsModule,
+    InvertersModule,
+    MetricsModule
   ],
 })
 export class AppModule {}
