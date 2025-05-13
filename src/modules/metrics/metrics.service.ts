@@ -3,8 +3,8 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Inverter } from '../inverters/entities/inverter.entity';
 import { Repository, UpdateDescription } from 'typeorm';
 import { Reading } from './entities/reading.entity';
-import { CreateReadingDto } from './dto/create-reading.dto';
-import { UpdateReadingDto } from './dto/update-reading.dto';
+import { CreateReadingDto } from './dtos/create-reading.dto';
+import { UpdateReadingDto } from './dtos/update-reading.dto';
 
 
 @Injectable()
