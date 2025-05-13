@@ -1,5 +1,13 @@
-import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn } from "typeorm";
-import { Plant } from "src/modules/plants/entities/plant.entity";
+import {
+    Column,
+    Entity,
+    JoinColumn,
+    ManyToOne,
+    OneToMany,
+    PrimaryGeneratedColumn,
+} from 'typeorm';
+import { Reading } from '../../metrics/entities/reading.entity';
+import { Plant } from '../../plants/entities/plant.entity';
 
 @Entity('inverters')
 export class Inverter {
@@ -12,7 +20,14 @@ export class Inverter {
     @Column()
     model: string;
 
-    @ManyToOne(() => Plant, plant => plant.inverters, {onDelete: 'CASCADE'})
+
+    @Column({ name: 'plant_id' })
+    plantId: number;
+
+    @ManyToOne(() => Plant, plant => plant.inverters, { onDelete: 'CASCADE' })
     @JoinColumn({ name: 'plant_id' })
     plant: Plant;
+
+    @OneToMany(() => Reading, reading => reading.inverter)
+    readings: Reading[];
 }

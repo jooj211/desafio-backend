@@ -9,13 +9,13 @@ import {
     HttpCode,
     HttpStatus,
     ParseIntPipe,
-  } from '@nestjs/common';
-  import { InvertersService } from './inverters.service';
-  import { CreateInverterDto } from './dtos/create-inverter.dto';
-  import { UpdateInverterDto } from './dtos/update-inverter.dto';
+} from '@nestjs/common';
+import { InvertersService } from './inverters.service';
+import { CreateInverterDto } from './dtos/create-inverter.dto';
+import { UpdateInverterDto } from './dtos/update-inverter.dto';
 
-  @Controller('inverters')
-  export class InvertersController {
+@Controller('inverters')
+export class InvertersController {
     constructor(private readonly invertersService: InvertersService) {}
 
     @Get()
@@ -47,4 +47,4 @@ import {
     remove(@Param('id', ParseIntPipe) id: number) {
         return this.invertersService.remove(id);
     }
-  }
+}

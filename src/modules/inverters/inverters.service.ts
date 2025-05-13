@@ -1,11 +1,10 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository, DeleteResult } from 'typeorm';
+import { DeleteResult, Repository } from 'typeorm';
+import { Plant } from '../plants/entities/plant.entity';
 import { CreateInverterDto } from './dtos/create-inverter.dto';
 import { UpdateInverterDto } from './dtos/update-inverter.dto';
 import { Inverter } from './entities/inverter.entity';
-import { Plant } from '../plants/entities/plant.entity';
-import { CreatePlantDto } from '../plants/dtos/create-plant.dto';
 
 
 @Injectable()
@@ -18,9 +17,17 @@ export class InvertersService {
         private readonly plantRepository: Repository<Plant>,
     ) {}
 
+    /**
+     * List all inverters, including plant relation.
+     */
+
     async findAll(): Promise<Inverter[]> {
         return this.inverterRepository.find({ relations: ['plant'] });
     }
+
+    /**
+     * Get single inverter by ID.
+     */
 
     async findOne(id: number): Promise<Inverter> {
         const inverter = await this.inverterRepository.findOne({
@@ -32,6 +39,10 @@ export class InvertersService {
         }
         return inverter;
     }
+
+    /**
+     * Create new inverter from DTO.
+     */
 
     async create(createInverterDto: CreateInverterDto): Promise<Inverter> {
         const plant = await this.plantRepository.findOneBy({ id: createInverterDto.plantId });
@@ -47,10 +58,18 @@ export class InvertersService {
         return this.inverterRepository.save(inverter);
     }
 
+    /**
+     * Update inverter fields.
+     */
+
     async update(id: number, updateInverterDto: UpdateInverterDto): Promise <Inverter> {
         await this.inverterRepository.update(id, updateInverterDto);
         return this.findOne(id);
     }
+
+    /**
+     * Delete inverter by ID.
+     */
 
     async remove(id: number): Promise<void> {
         const result: DeleteResult = await this.inverterRepository.delete(id);
