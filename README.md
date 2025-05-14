@@ -97,12 +97,6 @@ Lê `metrics.json`, ignora registros nulos (alertando linha aproximada) e exibe 
 
 ## 🧪 Testes
 
-- **Testes unitários**:
-
-  ```bash
-  npm run test
-  ```
-
 - **Testes de consulta**:
 
   ```bash
