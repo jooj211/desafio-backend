@@ -103,10 +103,10 @@ Lê `metrics.json`, ignora registros nulos (alertando linha aproximada) e exibe 
   npm run test
   ```
 
-- **Testes de integração (e2e)**:
+- **Testes de consulta**:
 
   ```bash
-  npm run test:e2e
+  npm run curl:tests
   ```
 
 ---
@@ -122,11 +122,10 @@ Lê `metrics.json`, ignora registros nulos (alertando linha aproximada) e exibe 
 | `start:prod`         | Inicia aplicação compilada                    |
 | `docs`               | Alias para `start:dev` (acessa Swagger UI)    |
 | `seed:inverters`     | Cria usinas e inversores                      |
+| `npm run curl:tests` | Teste para usinas, inversores e métricas      |
 | `import:metrics`     | Importa `metrics.json` para o banco           |
 | `migration:generate` | Gera uma nova migration                       |
 | `migration:run`      | Executa migrations pendentes                  |
-| `test`               | Executa testes unitários                      |
-| `test:e2e`           | Executa testes de integração (in-memory)      |
 | `lint`               | Executa ESLint e corrige problemas            |
 | `format`             | Formata código com Prettier                   |
 
